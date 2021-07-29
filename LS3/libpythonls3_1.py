@@ -50,5 +50,33 @@ ax3.set_title("График y3")
 ax4.plot(x, y4)
 ax4.set_title("График y4")
 
-Задание 4
+# Commented out IPython magic to ensure Python compatibility.
+# Задание 4
+import numpy as np
+import pandas as pd
+from scipy.stats import mode
+import numpy as np
+from matplotlib import pyplot as plt
+# %matplotlib inline
 
+import warnings
+warnings.filterwarnings('ignore')
+
+from google.colab import drive
+drive.mount('/content/gdrive')
+
+DATASET_PATH = 'gdrive/My Drive/Colab Notebooks/creditcard.csv'
+
+df = pd.read_csv(DATASET_PATH, sep=',')
+df.head(4)
+
+df['Class'].value_counts()
+
+df['Class'].hist(bins=2)
+
+df['Class'].hist(bins=2, log=True)
+
+plt.hist([df[df['Class']==0]['V1'], df[df['Class']==1]['V1']], bins=20, alpha=0.5, density=True, color = ['grey', 'red'])
+plt.legend([ 'Class 0','Class 1']) 
+plt.xlabel = 'V1'
+plt.show
